@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import img from './swans.jpg';
 import video from './im sick.mp4';
-import { render } from '@testing-library/react';
 
 
 
 function Title(){
   return (
-    <h1>
+    <h1 data-testid='title-1'>
       My Tournament Results in 2022
     </h1>
 );
@@ -59,20 +58,28 @@ function LinkButton() {
 
 
 function ActivityAPI(){
-
+  const [error, setError] = useState(null);
   const [acts, setActs] = useState("")
 
   useEffect(() => {
     fetch("https://www.boredapi.com/api/activity/")
       .then(res => res.json())
       .then(act => {
-      setActs(act.activity);})
-  },[]
-  )
+      setActs(act.activity);
+    },
+    error => {
+      setError(error);
+    }
+   )
+ },[])
 
-  return(
-    <div id ="activity">You should {acts} instead of reading this</div>
-  )
+  if(error){
+    return <div>Error loading something you should do</div>
+  }else{
+    return(
+      <div id ="activity">You should {acts} instead of reading this</div>
+    )
+  }
 }
 
 
@@ -240,8 +247,9 @@ function Video(){
 }
 
   // ========================================
-  
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(<div><Title /><GroupPhoto /><Background /><br></br><SubTitle /><br></br><LinkButton /><hr></hr><ActivityAPI /><Table /><SoundButton /><br></br><Video /></div>);
+  export default Title;
+
+  // const root = ReactDOM.createRoot(document.getElementById("root"));
+  // root.render(<div><Title /><GroupPhoto /><Background /><br></br><SubTitle /><br></br><LinkButton /><hr></hr><ActivityAPI /><Table /><SoundButton /><br></br><Video /></div>);
 
   
