@@ -24,6 +24,17 @@ h1{
     color: rgb(255, 255, 255);
 }
 
+
+#howdy{
+    height: 200px;
+    width: 300px;
+    margin-left: 50%;
+    transform: translateX(1000px);
+    transform: translateY(-1000px);
+    position: absolute;
+   
+}
+
 #activity{
     -webkit-text-stroke: 2px rgb(41, 41, 41);
     font-size: 1.7em;
@@ -34,16 +45,65 @@ h1{
     font-style: italic;
 }
 
+ol, ul {
+    padding-left: 30px;
+  }
+  
+  .board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  
+  .status {
+    margin-bottom: 10px;
+  }
+  
+  .square {
+    background: rgb(212, 212, 212);
+    border: 2px solid rgb(73, 73, 73);
+    float:left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+    transform: translateX(0px);
+    
+  }
+  
+  .square:focus {
+    outline: none;
+  }
+  
+  .kbd-navigation .square:focus {
+    background: #ddd;
+  }
+  
+  .game {
+    display: flex;
+    flex-direction: row;
+    transform: translateX(800px);
+  }
+  
+  .game-info {
+    margin-left: 20px;
+  }
+
 
 .Pokemon{
     background-image: url('updated.png') , 
       url('updatedAltaria.png'),
       url('updatedExeggutor.png');
-    height: 150%;
+    height:185%;
     left: 0;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: 150%;
     z-index:-1;
     animation: Pokemon 1000s linear infinite;
     transform: translate3d(0,0,0);
